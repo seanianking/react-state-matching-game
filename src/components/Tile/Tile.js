@@ -8,7 +8,8 @@ const Tile = (props) => {
 
 
   return (
-    <div className='Tile' style={{color}}>
+    <div className='Tile' style={color}>
+
     </div>
   )
 }
