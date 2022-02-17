@@ -3,7 +3,7 @@ import useHover from '../../hooks'
 import './TileSelector.css'
 import GameContext from '../../GameContext'
 
-const TileSelector = (props) => {
+const TileSelector = () => {
 
   const [ref, hovered] = useHover()
 
