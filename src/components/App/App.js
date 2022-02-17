@@ -8,7 +8,7 @@ import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       numTiles: 36,
       playing: false,
@@ -36,34 +36,30 @@ class App extends Component {
       const selectedTileIndex = indexOfSelected(tiles, id, color);
       let previousTileIndex = state.previousTileIndex;
 
-      return {toBeCleared, selectedTileIndex, tiles, previousTileIndex}
-    })
-    if (toBeCleared !== null) {
-      toBeCleared[0].selected = false;
-      toBeCleared[1].selected = false;
-      toBeCleared = null;
-      return toBeCleared
-    }
-    
-    selectedTileIndex.selected = true;
-    if (previousTileIndex !== null) {
-      let previousTile = previousTileIndex;
-      let selectedTile = selectedTileIndex;
-      if (previousTile.id !== selectedTile.id && previousTile.color === color) {
-        selectedTile.matched = true;
-        previousTile.matched = true;
-        previousTileIndex = null;
-
-        return {selectedTile, previousTile, previousTileIndex}
-      } else {
-        toBeCleared = [previousTileIndex, selectedTileIndex]
-        previousTileIndex = null;
-        return toBeCleared
+      if (toBeCleared !== null) {
+        tiles[toBeCleared[0]].selected = false;
+        tiles[toBeCleared[1]].selected = false;
+        toBeCleared = null;
       }
-    } else {
-      previousTileIndex = selectedTileIndex;
-      return previousTileIndex
-    }
+
+      tiles[selectedTileIndex].selected = true
+      if (previousTileIndex !== null) {
+        const previousTile = tiles[previousTileIndex]
+        const selectedTile = tiles[selectedTileIndex]
+        if (previousTile.id !== selectedTile.id && previousTile.color === color) {
+          selectedTile.matched = true;
+          previousTile.matched = true;
+          previousTileIndex = null;
+
+        } else {
+          toBeCleared = [previousTileIndex, selectedTileIndex]
+          previousTileIndex = null;
+        }
+      } else {
+        previousTileIndex = selectedTileIndex;
+      }
+      return { toBeCleared, tiles, previousTileIndex }
+    })
   }
 
   render() {
