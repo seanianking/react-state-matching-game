@@ -44,6 +44,7 @@ class App extends Component {
       toBeCleared = null;
       return toBeCleared
     }
+    
     selectedTileIndex.selected = true;
     if (previousTileIndex !== null) {
       let previousTile = previousTileIndex;
