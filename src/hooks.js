@@ -12,11 +12,11 @@ const useHover = () => {
     useEffect(() => {
         const refCopy = ref;
         //listeners for entering/leaving the tile
-        refCopy.current.addEventListener("mouseenter", enter())
-        refCopy.current.addEventListener("mouseleave", leave())
+        refCopy.current.addEventListener("mouseenter", () => { enter() })
+        refCopy.current.addEventListener("mouseleave", () => { leave() })
         //remove event listeners
-        refCopy.current.removeEventListener("mouseleave", enter())
-        refCopy.current.removeEventListener("mouseenter", leave())
+        refCopy.current.removeEventListener("mouseenter", () => { enter() })
+        refCopy.current.removeEventListener("mouseleave", () => { leave() })
 
     })
     return [ref, hovered]
