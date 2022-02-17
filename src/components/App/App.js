@@ -42,6 +42,7 @@ class App extends Component {
       toBeCleared[0].selected = false;
       toBeCleared[1].selected = false;
       toBeCleared = null;
+      return toBeCleared
     }
     selectedTileIndex.selected = true;
     if (previousTileIndex !== null) {
@@ -56,6 +57,7 @@ class App extends Component {
       } else {
         toBeCleared = [previousTileIndex, selectedTileIndex]
         previousTileIndex = null;
+        return toBeCleared
       }
     } else {
       previousTileIndex = selectedTileIndex;
