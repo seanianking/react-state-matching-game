@@ -35,6 +35,8 @@ class App extends Component {
       let toBeCleared = state.toBeCleared;
       const selectedTileIndex = indexOfSelected(tiles, id, color);
       let previousTileIndex = state.previousTileIndex;
+
+      return {toBeCleared, selectedTileIndex, tiles, previousTileIndex}
     })
     if (toBeCleared !== null) {
       toBeCleared[0].selected = false;
@@ -49,12 +51,15 @@ class App extends Component {
         selectedTile.matched = true;
         previousTile.matched = true;
         previousTileIndex = null;
+
+        return {selectedTile, previousTile, previousTileIndex}
       } else {
         toBeCleared = [previousTileIndex, selectedTileIndex]
         previousTileIndex = null;
       }
     } else {
       previousTileIndex = selectedTileIndex;
+      return previousTileIndex
     }
   }
 
